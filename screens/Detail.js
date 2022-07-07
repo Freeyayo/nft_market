@@ -1,7 +1,8 @@
 import React from 'react'
+import { Text } from 'react-native';
 
 export const Detail = () => {
     return (
-        'Detail'
+        <Text>Detail</Text>
     )
 }
