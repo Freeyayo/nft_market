@@ -1,10 +1,30 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native"
+import { createStackNavigator } from "@react-navigation/stack"
 
-export default function App() {
+import { Home } from './screens/Home';
+import { Detail } from './screens/Detail';
+
+import { useFonts } from 'expo-font';
+
+const Stack = createStackNavigator()
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'transparent'
+  }
+}
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Hello world</Text>
-    </View>
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Home'>
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='Details' component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -16,3 +36,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+export default App;
